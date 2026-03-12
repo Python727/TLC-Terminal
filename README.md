@@ -132,6 +132,9 @@ The app saves automatically to Electron's `userData` directory:
 | Windows | `%APPDATA%\tlc-map\tlcmap-state.json` |
 | macOS | `~/Library/Application Support/tlc-map/tlcmap-state.json` |
 | Linux | `~/.config/tlc-map/tlcmap-state.json` |
+
+
+Or you can go to Settings and export your data :)
  
 ---
  
