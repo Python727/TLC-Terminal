@@ -24,7 +24,8 @@ An interactive map and planning tool for **The Last Caretaker**, built with Elec
  --
  
 ## Features
- 
+
+- **Savegame Selection** — Select up to 8 saves to keep your game saves separate.
 - **Interactive Map** — Navigate stations and locations across zones with drag & zoom
 - **Location Info** — View details, resources, enemies and notes for each station
 - **Waypoints & Markers** — Set custom waypoints and color-coded markers
@@ -128,15 +129,8 @@ Open the calculator via the **🧬** button in the toolbar.
  
 ## State & Save Data
  
-The app saves automatically to Electron's `userData` directory:
+The app saves automatically to `~/Documents/tlc-navigation-terminal`
  
-| OS | Path |
-|----|------|
-| Windows | `%APPDATA%\tlc-map\tlcmap-state.json` |
-| macOS | `~/Library/Application Support/tlc-map/tlcmap-state.json` |
-| Linux | `~/.config/tlc-map/tlcmap-state.json` |
-
-
 Or you can go to Settings and export your data :)
  
 ---
