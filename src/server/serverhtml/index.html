@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <!-- ─────────────────────────────────────────────── -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TLC— Terminal</title>
+    <!-- ─────────────────────────────────────────────── -->
+
+    <!-- Fonts (Google CDN — Electron braucht webSecurity:false oder lokale Kopien) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+    <!-- ─── Base styles (design tokens + reset) ──────── -->
+    <link rel="stylesheet" href="../../data/CSS/base.css"/>
+
+    <!-- ─── Electron IPC bridge (muss VOR allem anderen laden) ── -->
+    <script src="../../data/Js/utils/i18n.js"></script>
+    <script src="../serverjs/serverconnection.js"></script>
+
+
+    <!-- ─────────────────────────────────────────────── -->
+  </head>
+
+  <body>
+
+    <!-- ─── ROOT CUSTOM ELEMENT ──────────────────────── -->
+    <tlc-save-slots></tlc-save-slots>
+    <tlc-map style="display:none"></tlc-map>
+
+    <script>
+      // ── Navigation flow ──────────────────────────────────────────
+      // 1. Slot selected → show main menu
+      window.addEventListener('tlc:slot-selected', (e) => {
+        const menu = document.createElement('tlc-main-menu');
+        // Pass slot name for display
+        const slots = window.__lastSlots || [];
+        const slotInfo = slots.find(s => s.slot === e.detail.slot);
+        if (slotInfo) menu._slotName = slotInfo.name;
+        document.body.appendChild(menu);
+      });
+
+      // 2. Menu page selected → open the right page
+      window.addEventListener('tlc:menu-open', (e) => {
+        const page = e.detail.page;
+
+        // Hide map by default for all pages
+        const map = document.querySelector('tlc-map');
+        if (map) map.style.display = 'none';
+
+        if (page === 'map') {
+          if (map) map.style.display = '';
+          window.__mapBackToMenu = true;
+        }
+
+        if (page === 'calc') {
+          // Remove old calc if exists
+          document.querySelector('tlc-human-calc')?.remove();
+          const calc = document.createElement('tlc-human-calc');
+          calc.setAttribute('standalone', '');
+          document.body.appendChild(calc);
+        }
+
+        if (page === 'index') {
+          document.querySelector('tlc-item-index')?.remove();
+          const idx = document.createElement('tlc-item-index');
+          document.body.appendChild(idx);
+        }
+      });
+
+      // 3. Store slot list for name lookup
+      const _origListSlots = window.TLC_SERVER?.listSlots;
+      if (_origListSlots) {
+        const _wrapped = window.TLC_SERVER.listSlots.bind(window.TLC_SERVER);
+        window.TLC_SERVER.listSlots = async (...a) => {
+          const res = await _wrapped(...a);
+          if (res?.slots) window.__lastSlots = res.slots;
+          return res;
+        };
+      }
+    </script>
+
+    <!-- ─────────────────────────────────────────────── -->
+
+    <!-- ─── Shared data / state (kein DOM, nur Daten) ── -->
+    <script src="../../data/Js/data/locations.js"></script>
+    <script src="../../data/Js/data/itemindex.js"></script>
+    <script src="../../data/Js/data/state.js"></script>
+
+    <!-- ─── Utilities ────────────────────────────────── -->
+    <script src="../../data/Js/utils/coords.js"></script>
+    <script src="../../data/Js/utils/storage.js"></script>
+    <script src="../../data/Js/utils/notify.js"></script>
+
+    <!-- ─── Custom Elements (Reihenfolge: Deps zuerst) ── -->
+    <script src="../../data/Js/components/TlcNotification.js"></script>
+    <script src="../../data/Js/components/TlcContextMenu.js"></script>
+    <script src="../../data/Js/components/TlcModal.js"></script>
+    <script src="../../data/Js/components/TlcSidebar.js"></script>
+    <script src="../../data/Js/components/TlcLegend.js"></script>
+    <script src="../../data/Js/components/TlcControls.js"></script>
+    <script src="../../data/Js/components/TlcHumanCalc.js"></script>
+    <script src="../../data/Js/components/TlcSaveSlots.js"></script>
+    <script src="../../data/Js/components/TlcMainMenu.js"></script>
+    <script src="../../data/Js/components/TlcItemIndex.js"></script>
+    <script src="../../data/Js/components/TlcMap.js"></script>
+
+    <!-- ─────────────────────────────────────────────── -->
+  </body>
+
+</html>
