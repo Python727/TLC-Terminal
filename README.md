@@ -6,14 +6,22 @@ An interactive map and planning tool for **The Last Caretaker**, built with Elec
 
 ---
 ![Navigation Terminal](https://i.postimg.cc/mrR36665/Screenshot-3.png)
+![Navigation Terminal](https://i.postimg.cc/13xTzyDm/Screenshot-12.png)
+
+---
+
+![Navigation Terminal](https://i.postimg.cc/W3fYcVs5/Screenshot-13.png)
+![Navigation Terminal](https://i.postimg.cc/h4Ng9WVY/Screenshot-14.png)
+![Navigation Terminal](https://i.postimg.cc/sgrrNY6S/Screenshot-15.png)
+
+---
+
+![Navigation Terminal](https://i.postimg.cc/0N5q88qD/Screenshot-16.png)
+![Navigation Terminal](https://i.postimg.cc/C1XyHknG/Screenshot-17.png)
+![Navigation Terminal](https://i.postimg.cc/pV5MVG3q/Screenshot-18.png)
+
+---
 ![Navigation Terminal](https://i.postimg.cc/nctbdW5G/Screenshot-3.png)
-
----
-
-![Navigation Terminal](https://i.postimg.cc/G3gTGkSj/Screenshot-4.png)
-
----
-
 ![Navigation Terminal](https://i.postimg.cc/j5dCJ5HG/Screenshot-5.png)
 ![Navigation Terminal](https://i.postimg.cc/QNzVHjFM/Screenshot-6.png)
 ![Navigation Terminal](https://i.postimg.cc/GmFp7YzW/Screenshot-7.png)
