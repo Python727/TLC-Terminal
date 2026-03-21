@@ -1,4 +1,4 @@
-# TLC — Navigation Terminal
+# TLC — Terminal
 
 An interactive map and planning tool for **The Last Caretaker**, built with Electron.
 
