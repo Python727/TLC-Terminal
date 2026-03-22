@@ -6,7 +6,7 @@ An interactive map and planning tool for **The Last Caretaker**, built with Elec
 
 ---
 ![Navigation Terminal](https://i.postimg.cc/mrR36665/Screenshot-3.png)
-![Navigation Terminal](https://i.postimg.cc/13xTzyDm/Screenshot-12.png)
+![Navigation Terminal](https://i.postimg.cc/zB4Hz9sh/Screenshot-11.png)
 
 ---
 
