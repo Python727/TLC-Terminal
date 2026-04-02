@@ -1,0 +1,2 @@
+-- Starting with this version, self-building is no longer possible. Source code can be requested for updates.
+--> Discord : https://discord.gg/channel37 --> Python.72 #0311
