@@ -57,7 +57,7 @@ No Node.js required. Just download and run:
  
 ---
  
-### Option B — Run from source
+### Option B — Run from source   --->>> Ask Python.72 for Code
  
 Requires [Node.js](https://nodejs.org/) v18 or newer.
  
