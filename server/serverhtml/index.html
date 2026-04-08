@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- ─────────────────────────────────────────────── -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TLC — Terminal</title>
+    <!-- ─────────────────────────────────────────────── -->
+
+    <!-- Fonts (Google CDN — Electron braucht webSecurity:false oder lokale Kopien) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+    <!-- ─── Base styles (design tokens + reset) ──────── -->
+    <link rel="stylesheet" href="../../data/CSS/base.css"/>
+
+    <!-- ─── Electron IPC bridge (muss VOR allem anderen laden) ── -->
+    <script src="../../data/Js/utils/i18n.js"></script>
+    <script src="../../data/Js/utils/i18n_data.js"></script>
+    <script src="../serverjs/serverconnection.js"></script>
+
+    <!-- ─────────────────────────────────────────────── -->
+  </head>
+
+  <body>
+
+    <!-- ─── ROOT CUSTOM ELEMENT ──────────────────────── -->
+    <tlc-save-slots></tlc-save-slots>
+    <tlc-map style="display:none"></tlc-map>
+
+    <script>
+      // ── Navigation flow ──────────────────────────────────────────
+      // 1. Slot selected → show main menu
+      window.addEventListener('tlc:slot-selected', (e) => {
+        const menu = document.createElement('tlc-main-menu');
+        // Pass slot name for display
+        const slots = window.__lastSlots || [];
+        const slotInfo = slots.find(s => s.slot === e.detail.slot);
+        if (slotInfo) menu._slotName = slotInfo.name;
+        document.body.appendChild(menu);
+      });
+
+      // 2. Menu page selected → open the right page
+      window.addEventListener('tlc:menu-open', (e) => {
+        const page = e.detail.page;
+
+        // Hide map by default for all pages
+        const map = document.querySelector('tlc-map');
+        if (map) map.style.display = 'none';
+
+        if (page === 'map') {
+          if (map) map.style.display = '';
+          window.__mapBackToMenu = true;
+        }
+
+        if (page === 'calc') {
+          // Remove old calc if exists
+          document.querySelector('tlc-human-calc')?.remove();
+          const calc = document.createElement('tlc-human-calc');
+          calc.setAttribute('standalone', '');
+          document.body.appendChild(calc);
+        }
+
+        if (page === 'index') {
+          document.querySelector('tlc-item-index')?.remove();
+          const idx = document.createElement('tlc-item-index');
+          document.body.appendChild(idx);
+        }
+
+        if (page === 'enemies') {
+          document.querySelector('tlc-enemy-index')?.remove();
+          const ei = document.createElement('tlc-enemy-index');
+          document.body.appendChild(ei);
+        }
+
+        if (page === 'outfits') {
+          document.querySelector('tlc-outfit-tracker')?.remove();
+          const ot = document.createElement('tlc-outfit-tracker');
+          document.body.appendChild(ot);
+        }
+
+        if (page === 'powercalc') {
+          document.querySelector('tlc-power-calc')?.remove();
+          const pc = document.createElement('tlc-power-calc');
+          document.body.appendChild(pc);
+        }
+
+        if (page === 'launchhistory') {
+          document.querySelector('tlc-launch-history')?.remove();
+          const lh = document.createElement('tlc-launch-history');
+          document.body.appendChild(lh);
+        }
+
+        if (page === 'council') {
+          document.querySelector('tlc-council-overview')?.remove();
+          const co = document.createElement('tlc-council-overview');
+          document.body.appendChild(co);
+        }
+
+        if (page === 'deathlog') {
+          document.querySelector('tlc-death-log')?.remove();
+          const dl = document.createElement('tlc-death-log');
+          document.body.appendChild(dl);
+        }
+
+        if (page === 'logindex') {
+          document.querySelector('tlc-log-index')?.remove();
+          const dl = document.createElement('tlc-log-index');
+          document.body.appendChild(dl);
+        }
+
+        if (page === 'achievements') {
+          document.querySelector('tlc-achievement-tracker')?.remove();
+          const at = document.createElement('tlc-achievement-tracker');
+          document.body.appendChild(at);
+        }
+
+        if (page === 'completion') {
+          document.querySelector('tlc-completion-tracker')?.remove();
+          const ct = document.createElement('tlc-completion-tracker');
+          document.body.appendChild(ct);
+        }
+
+        if (page === 'companions') {
+          document.querySelector('tlc-companion-index')?.remove();
+          const ci = document.createElement('tlc-companion-index');
+          document.body.appendChild(ci);
+        }
+      });
+
+      // 3. Store slot list for name lookup
+      const _origListSlots = window.TLC_SERVER?.listSlots;
+      if (_origListSlots) {
+        const _wrapped = window.TLC_SERVER.listSlots.bind(window.TLC_SERVER);
+        window.TLC_SERVER.listSlots = async (...a) => {
+          const res = await _wrapped(...a);
+          if (res?.slots) window.__lastSlots = res.slots;
+          return res;
+        };
+      }
+    </script>
+
+    <!-- ─────────────────────────────────────────────── -->
+
+    <!-- ─── Shared data / state (kein DOM, nur Daten) ── -->
+    <script src="../../data/Js/data/locations.js"></script>
+    <script src="../../data/Js/data/itemindex.js"></script>
+    <script src="../../data/Js/data/imagedata.js"></script>
+    <script src="../../data/Js/data/enemies.js"></script>
+    <script src="../../data/Js/data/councildata.js"></script>
+    <script src="../../data/Js/data/companions.js"></script>
+    <script src="../../data/Js/data/state.js"></script>
+    
+    <script src="../../data/Js/data/logdata_en.js"></script>
+    <script src="../../data/Js/data/logdata_de.js"></script>
+    
+    
+    <!-- ─── Utilities ────────────────────────────────── -->
+    <script src="../../data/Js/utils/coords.js"></script>
+    <script src="../../data/Js/utils/storage.js"></script>
+    <script src="../../data/Js/utils/notify.js"></script>
+
+    <!-- ─── Custom Elements (Reihenfolge: Deps zuerst) ── -->
+    <script src="../../data/Js/components/TlcNotification.js"></script>
+    <script src="../../data/Js/components/TlcContextMenu.js"></script>
+    <script src="../../data/Js/components/TlcModal.js"></script>
+    <script src="../../data/Js/components/TlcSidebar.js"></script>
+    <script src="../../data/Js/components/TlcLegend.js"></script>
+    <script src="../../data/Js/components/TlcControls.js"></script>
+    <script src="../../data/Js/components/TlcHumanCalc.js"></script>
+    <script src="../../data/Js/components/TlcSaveSlots.js"></script>
+    <script src="../../data/Js/components/TlcMainMenu.js"></script>
+    <script src="../../data/Js/components/TlcItemIndex.js"></script>
+    <script src="../../data/Js/components/TlcEnemyIndex.js"></script>
+    <script src="../../data/Js/components/TlcCompanionIndex.js"></script>
+    <script src="../../data/Js/components/TlcCompletionTracker.js"></script>
+    <script src="../../data/Js/components/TlcAchievementTracker.js"></script>
+    <script src="../../data/Js/components/TlcDeathLog.js"></script>
+    <script src="../../data/Js/components/TlcLaunchHistory.js"></script>
+    <script src="../../data/Js/components/TlcPowerCalc.js"></script>
+    <script src="../../data/Js/components/TlcOutfitTracker.js"></script>
+    <script src="../../data/Js/components/TlcImageIndex.js"></script>
+    <script src="../../data/Js/components/TlcMap.js"></script>
+    <script src="../../data/Js/components/TlcCouncilOverview.js"></script>
+    <script src="../../data/Js/components/TlcLogIndex.js"></script>
+
+    <!-- ─────────────────────────────────────────────── -->
+  </body>
+
+</html>
