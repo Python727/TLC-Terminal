@@ -122,7 +122,7 @@ Bind a hotkey under **⌨ Keyboard Shortcuts** (e.g. `Ctrl+Shift+I`) to trigger 
 
 ## Near-Field Search
 
-Near-Field Search reads your current save file and shows all collectible items near your boat — memories, loot, materials, and more — grouped by type and sorted by distance.
+Near-Field Search reads your current save file and shows all collectible items near your boat (player -> mod required) — memories, loot, materials, and more — grouped by type and sorted by distance.
 
 ### Setup
 
@@ -144,12 +144,12 @@ The search updates every time you open the panel or trigger a manual import. For
 
 ## Waypoint System (TerminalWaypoint Mod)
 
-The Waypoint System connects the app to a UE4SS Blueprint mod running inside the game. It provides:
+The Waypoint System connects the app to a UE4SS Blueprint mod & Lua mod running inside the game. It provides:
 
-- **Live boat position** on the map, updated every 2 seconds
+- **Live boat position** on the map, updated every 10 seconds
+- **Live Player position** for the Near-Field-Search, updated every 10 seconds (refresh the search to updtae the position)
 - **In-app waypoint setting** — right-click any location or Near-Field item and send a waypoint directly to the game's navigation compass
 
-> This is a private mod system. For access or further information, contact **Python.72**.
 
 ### Requirements
 
@@ -176,9 +176,10 @@ The Waypoint System connects the app to a UE4SS Blueprint mod running inside the
 
 Once activated, the app polls `waypoint.json` every 2 seconds:
 
-- **Boat position** is read from `PlayerPos` and shown as a moving marker on the map
-- **Setting a waypoint**: right-click any map location → **Set as Waypoint**, or use **Add to Navigation** in Near-Field Search. The app writes the target coordinates to `waypoint.json` with `Request +1` and `IsWaypointActive: true`, which the in-game mod picks up and activates on the compass
-- **Clearing a waypoint**: right-click the map → **Clear Waypoint**, or use the waypoint button in the map toolbar
+- **Boat position** is read from `BoatPos` and shown as a moving marker on the map
+- **Player position** is read from `PlayerPos` for the Near-Field-Search, updated every 10 seconds (refresh the search to updtae the position)
+- **Setting a waypoint**: right-click any item → **Add to Navigation** in Near-Field Search. The app writes the target coordinates to `waypoint.json` with `Request 1` and `IsWaypointActive: true`, which the in-game mod picks up and activates on the compass
+- **Clear Navigation**: right-click the map → **Clear Waypoint**, or use the waypoint button in the map toolbar
 
 When the Waypoint System is active, the SAV Auto-Import skips overwriting boat position so the live mod position is always used instead.
 
