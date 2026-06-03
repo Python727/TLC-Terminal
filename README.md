@@ -6,27 +6,10 @@ An interactive map and planning tool for **The Last Caretaker**, built with Elec
 
 ---
 ![Navigation Terminal](https://i.postimg.cc/mrR36665/Screenshot-3.png)
-![Navigation Terminal](https://i.postimg.cc/zB4Hz9sh/Screenshot-11.png)
+![Navigation Terminal](https://i.postimg.cc/yxbpdyCV/image.png)
 
 ---
-
-![Navigation Terminal](https://i.postimg.cc/W3fYcVg5/Screenshot-13.png)
-![Navigation Terminal](https://i.postimg.cc/h4Ng9WVY/Screenshot-14.png)
-![Navigation Terminal](https://i.postimg.cc/sgrrNY6S/Screenshot-15.png)
-
----
-
-![Navigation Terminal](https://i.postimg.cc/0N5q88qD/Screenshot-16.png)
-![Navigation Terminal](https://i.postimg.cc/C1XyHknG/Screenshot-17.png)
-![Navigation Terminal](https://i.postimg.cc/pV5MVG3q/Screenshot-18.png)
-
----
-![Navigation Terminal](https://i.postimg.cc/nctbdW5G/Screenshot-3.png)
-![Navigation Terminal](https://i.postimg.cc/j5dCJ5HG/Screenshot-5.png)
-![Navigation Terminal](https://i.postimg.cc/QNzVHjFM/Screenshot-6.png)
-![Navigation Terminal](https://i.postimg.cc/GmFp7YzW/Screenshot-7.png)
-![Navigation Terminal](https://i.postimg.cc/fLLTRPZT/Screenshot-8.png)
-![Navigation Terminal](https://i.postimg.cc/BnBK8dWK/Screenshot-9.png)
+![Navigation Terminal](https://i.postimg.cc/ry3vqqVn/Screenshot-1.png)
 
 ---
 
