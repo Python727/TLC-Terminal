@@ -137,11 +137,11 @@ The Waypoint System connects the app to a UE4SS Blueprint mod & Lua mod running 
 ### Requirements
 
 - **UE4SS** installed for The Last Caretaker
-- The **TerminalWaypoint** Blueprint mod placed at:
+- The [**TerminalWaypoint** Blueprint mod](https://www.nexusmods.com/thelastcaretaker/mods/143) placed at:
   ```
-  <GameFolder>\Voyage\Binaries\Win64\ue4ss\Mods\TerminalWaypoint\
+  <GameFolder>\Voyage\Binaries\Win64\ue4ss\Mods\
   ```
-  The mod writes and reads a `waypoint.json` file in that folder.
+  The mod writes and reads a `waypoint.json` file inside the mod folder.
 
 ### Setup in the app
 
@@ -227,4 +227,6 @@ Use **Settings → Export** to back up your data, or **Import** to restore it.
 
 ## License
 
-Fan-made tool for *The Last Caretaker*. Not affiliated with the game developers.
+- Fan-made tool for [*The Last Caretaker*](https://discord.com/invite/channel37). Not affiliated with the game developers.
+- Mod Created By : [*Dmgvol - Nexus*](https://www.nexusmods.com/profile/dmgvol) , [*Dmgvol - Github*](https://github.com/Dmgvol)
+- App Created By : [*Python727 - Github*](https://github.com/Python727)
