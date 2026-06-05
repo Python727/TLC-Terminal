@@ -230,4 +230,5 @@ Use **Settings → Export** to back up your data, or **Import** to restore it.
 - Fan-made tool for [*The Last Caretaker*](https://discord.com/invite/channel37). Not affiliated with the game developers.
 - Mod Created By : [*Dmgvol - Nexus*](https://www.nexusmods.com/profile/dmgvol) , [*Dmgvol - Github*](https://github.com/Dmgvol)
 - App Created By : [*Python727 - Github*](https://github.com/Python727)
+
 -> Discord :: [*Channel37*](https://discord.com/invite/channel37) | for mods -> [*TLC Modding*](https://discord.gg/UTmjSa7SgQ)
