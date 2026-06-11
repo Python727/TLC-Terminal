@@ -157,7 +157,7 @@ The Waypoint System connects the app to a UE4SS Blueprint mod & Lua mod running 
 
 ### How it works
 
-Once activated, the app polls `waypoint.json` every 2 seconds:
+Once activated, the app polls `waypoint.json` every 5 seconds (mod writing all 10 seconds):
 
 - **Boat position** is read from `BoatPos` and shown as a moving marker on the map
 - **Player position** is read from `PlayerPos` for the Near-Field-Search, updated every 10 seconds (refresh the search to updtae the position)
