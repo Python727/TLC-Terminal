@@ -157,12 +157,14 @@ The Waypoint System connects the app to a UE4SS Blueprint mod & Lua mod running 
 
 ### How it works
 
-Once activated, the app polls `waypoint.json` every 5 seconds (mod writing all 10 seconds):
+Once activated, the app polls `waypoint.json` every 5 seconds (mod writing all 5 seconds):
 
 - **Boat position** is read from `BoatPos` and shown as a moving marker on the map
 - **Player position** is read from `PlayerPos` for the Near-Field-Search, updated every 10 seconds (refresh the search to updtae the position)
-- **Setting a waypoint**: right-click any item → **Add to Navigation** in Near-Field Search. The app writes the target coordinates to `waypoint.json` with `Request 1` and `IsWaypointActive: true`, which the in-game mod picks up and activates on the compass
-- **Clear Navigation**: right-click the map → **Clear Waypoint**, or use the waypoint button in the map toolbar
+- **Setting a waypoint**: **Right-click** any item → **Add to Navigation** in Near-Field Search. The app writes the target coordinates to `waypoint.json` with `Request_1 1` and `IsWaypointActive_1: true`, which the in-game mod picks up and activates on the compass
+- **Set waypoint**: **Right-click** or press **E** on any object or location on the map → **Add Waypoint**. The app writes the target coordinates—along with `Request_2 1` and `IsWaypointActive_2: true`—to the `waypoint.json` file; the in-game mod picks up this data and activates the waypoint on the compass.
+- **Clear Navigation**: right-click the map → **Clear Waypoint**, or use the waypoint itself by clicking on it.
+- **Clear Navigation**: in the Nearfieldsearch right-click the item → **Clear Waypoint**, or use the button in the richt top corner
 
 When the Waypoint System is active, the SAV Auto-Import skips overwriting boat position so the live mod position is always used instead.
 
